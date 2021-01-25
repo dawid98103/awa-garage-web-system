@@ -1,0 +1,30 @@
+#############################################
+# EMBEDDED TOMCAT CONFIG
+#############################################
+
+server:
+  port: 4090
+  servlet:
+    context-path: /garage
+  error:
+    include-message: always
+    include-exception: true
+
+#############################################
+# DATASOURCE/JPA CONFIG
+#############################################
+
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/garage
+    username: postgres
+    password: postgres
+    hikari:
+      maximum-pool-size: 5
+      idle-timeout: 5
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true

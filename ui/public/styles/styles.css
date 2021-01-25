@@ -1,0 +1,102 @@
+.homepage-header {
+    padding: 20px;
+    box-shadow: 0 1px 2px 0 rgba(34, 36, 38, .15);
+    border-radius: .28571429rem;
+    border: 1px solid rgba(34, 36, 38, .15);
+    text-align: center;
+}
+
+.subheader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.subheader input {
+    min-width: 220px;
+}
+
+.judJDM {
+    padding: 0px !important
+}
+
+.fullwidth {
+    width: 100%;
+}
+
+.ui.card {
+    opacity: 1;
+    backface-visibility: hidden;
+}
+
+.container-overlay {
+    background-color: black;
+}
+
+.container-overlay:hover .ui.card {
+    transition: .2s ease;
+    opacity: 0.9;
+}
+
+.ui.card.car-img-card {
+    padding-bottom: 0px;
+    margin: 0px
+}
+
+.create-car-form {
+    padding: 20px;
+    box-shadow: 0 1px 2px 0 rgba(34, 36, 38, .15);
+    border-radius: .28571429rem;
+    border: 1px solid rgba(34, 36, 38, .15);
+    width: 60%;
+}
+
+.ui.modal>.image.content {
+    justify-content: space-around;
+}
+
+.issue-details {
+    padding: 20px;
+    box-shadow: 0 1px 2px 0 rgba(34, 36, 38, .15);
+    border-radius: .28571429rem;
+    border: 1px solid rgba(34, 36, 38, .15);
+}
+
+.issue-details-content {
+    font-size: large;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.issue-details-decription-container {
+    padding: 10px 50px 50px 50px;
+}
+
+.issue-details-description-segment {
+    padding: 20px 10px 20px 10px;
+}
+
+.repair-history-segment {
+    padding: 20px 10px 20px 10px;
+}
+
+.clients-action-cell {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.ui.table thead {
+    text-align: center;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.scrollable-table {
+    max-height: 0.2em;
+}
+
+td {
+    text-align: center;
+}
