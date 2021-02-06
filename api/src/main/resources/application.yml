@@ -6,6 +6,8 @@ server:
   port: 4090
   servlet:
     context-path: /garage
+    encoding:
+      charset: UTF-8
   error:
     include-message: always
     include-exception: true
@@ -13,7 +15,6 @@ server:
 #############################################
 # DATASOURCE/JPA CONFIG
 #############################################
-
 
 spring:
   datasource:
@@ -24,7 +25,8 @@ spring:
     hikari:
       maximum-pool-size: 5
       idle-timeout: 5
+
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: false

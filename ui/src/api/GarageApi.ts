@@ -294,15 +294,13 @@ export const deleteUserByUserId = (userId: number): Promise<AxiosResponse<IApiMe
     return retrievedMessage;
 }
 
-export const deleteCarForUser = (carId: number): Promise<AxiosResponse<IApiMessageResponse>> => {
-    const user = JSON.parse(localStorage.getItem('user') || 'null');
-
+export const deactivateCarForUser = (carId: number): Promise<AxiosResponse<IApiMessageResponse>> => {
     const config = {
         headers: authHeader()
     }
 
     const retrievedMessage = axios.delete(
-        baseUrl + `/users/${user.userId}/cars/${carId}`,
+        baseUrl + `/cars/${carId}`,
         config
     )
 

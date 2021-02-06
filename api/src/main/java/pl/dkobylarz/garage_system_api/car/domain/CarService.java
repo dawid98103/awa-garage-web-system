@@ -7,6 +7,8 @@ import pl.dkobylarz.garage_system_api.car.dto.CarBrandDto;
 import pl.dkobylarz.garage_system_api.car.dto.CarDto;
 import pl.dkobylarz.garage_system_api.car.dto.CarModelDto;
 import pl.dkobylarz.garage_system_api.car.dto.EngineTypeDto;
+import pl.dkobylarz.garage_system_api.car.util.CarLogPrinter;
+import pl.dkobylarz.garage_system_api.infrastructure.logs.Logger;
 import pl.dkobylarz.garage_system_api.issue.dto.CreateCarDto;
 import pl.dkobylarz.garage_system_api.util.DateTimeStampConverter;
 
@@ -20,10 +22,11 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 class CarService {
 
+    private final EntityManager entityManager;
     private final CarRepository carRepository;
     private final CarModelRepository carModelRepository;
     private final CarBrandRepository carBrandRepository;
-    private final EntityManager entityManager;
+    private final Logger logger = new CarLogPrinter();
 
     public Set<CarDto> getCarsForUserId(int userId) {
         return carRepository.findAllByUserId(userId);
@@ -51,10 +54,19 @@ class CarService {
     }
 
     public void saveCarForUser(CreateCarDto createCarDto) {
+        logger.printInfo(String.format("Zapisano pojazd dla użytkownika o id: %d", createCarDto.getUserId()));
+
         carRepository.save(convertToEntity(createCarDto));
     }
 
     public void deactivateCar(int carId) {
+        Car car = entityManager.getReference(Car.class, carId);
+
+        logger.printWarn(String.format("Dezaktywowano pojazd: %s %s dla użytkownika o id: %d",
+                car.getCarBrand().getBrandName(),
+                car.getCarModel().getModelName(),
+                car.getUserId()));
+
         carRepository.deactivateCarById(carId);
     }
 
