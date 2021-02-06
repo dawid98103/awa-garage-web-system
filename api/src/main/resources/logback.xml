@@ -1,0 +1,39 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{0}[%M:%L] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ROTATE_FILE_DAILY" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>./log/garage.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>logs/archived/garage-app.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <!-- each archived file, size max 10MB -->
+            <maxFileSize>10MB</maxFileSize>
+            <!-- total size of all archive files, if total size > 20GB, it will delete old archived file -->
+            <totalSizeCap>20GB</totalSizeCap>
+            <!-- 60 days to keep -->
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{0}[%M:%L] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+<!--<root level="DEBUG">-->
+<!--    <appender-ref ref="STDOUT"/>-->
+<!--</root>-->
+
+    <logger name="pl.dkobylarz.garage_system_api" level="WARN" additivity="false">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="ROTATE_FILE_DAILY"/>
+    </logger>
+
+    <logger name="pl.dkobylarz.garage_system_api" level="INFO" additivity="false">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="ROTATE_FILE_DAILY"/>
+    </logger>
+
+</configuration>

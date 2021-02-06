@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import pl.dkobylarz.garage_system_api.user.constant.UserRoles;
 
 @Getter
 @Setter

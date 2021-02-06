@@ -23,17 +23,17 @@ class UserService {
                 .orElseThrow(UserNotFoundException::new);
     }
 
-    public Optional<UserDto> getUserByUsername(String username){
+    public Optional<UserDto> getUserByUsername(String username) {
         return userRepository.findByUsername(username);
-    }
-
-    public String getUsernameByUserId(int userId) {
-        return userRepository.findUsernameByUserId(userId);
     }
 
     public Set<ClientDto> getUsersByRoleId(int roleId) {
         Set<User> users = userRepository.findByRoleId(roleId);
         return convertUsersToClients(users);
+    }
+
+    public String getUsernameByUserId(int userId) {
+        return userRepository.findUsernameByUserId(userId);
     }
 
     public String getUserAvatarUrl(int userId) {

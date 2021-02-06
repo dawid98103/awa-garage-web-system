@@ -12,10 +12,6 @@ class IssueValidatorService {
 
     private final IssueRepository issueRepository;
 
-    public boolean activeIssueForUserIdExists(int userId) {
-        return issueRepository.existsByUserIdAndStatusIn(userId, IssueStatus.getActiveIssueStatus());
-    }
-
     public boolean amountIsNotProper(BigDecimal amount) {
         return !(amount.compareTo(BigDecimal.ZERO) >= 0);
     }

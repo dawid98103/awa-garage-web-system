@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Card, Divider, Header, List, Modal, ModalActions, Segment, Image, Table, Icon } from 'semantic-ui-react';
 import { ICarDto, IIssueHistoryDto } from '../../api/types';
-import { fetchIssuesHistoryForCar, deleteCarForUser } from '../../api/GarageApi';
+import { fetchIssuesHistoryForCar, deactivateCarForUser } from '../../api/GarageApi';
 import { AxiosResponse } from 'axios';
 
 import _ from 'lodash';
@@ -29,7 +29,7 @@ const ClientCarDetailsModal: React.FC<IClientCarDetailsModalProps> = ({ car, ref
     }
 
     const handeDeleteCar = async (carId: number) => {
-        await deleteCarForUser(carId).then(response => {
+        await deactivateCarForUser(carId).then(response => {
             store.addNotification({
                 title: 'Pojazdy',
                 type: 'success',
